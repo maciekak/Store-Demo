@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using StoreDemo.BussinessLogic;
 using StoreDemo.ViewModels;
 
 namespace StoreDemo.DataAccessLayer
@@ -34,6 +35,15 @@ namespace StoreDemo.DataAccessLayer
                 .ToList();
         }
 
-        public 
+        public List<NameWithId> GetDepartmentsNamesIds()
+        {
+            return _storeDb
+                .Departments
+                .Select(d => new NameWithId
+                {
+                    Id = d.Id,
+                    Name = d.Name
+                }).ToList();
+        }
     }
 }

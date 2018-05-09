@@ -23,7 +23,11 @@ namespace StoreDemo.Controllers
 
         public ActionResult Departments()
         {
-            return View(_departmentsRepository.GetDepartmentsViewModel());
+            return View(new DepartmentsNameIdViewModel
+            {
+                DepartmentsNames = _departmentsRepository.GetDepartmentsNames(),
+                DepartmentNameWithId = _departmentsRepository.GetDepartmentsNamesIds()
+            });
         }
 
         public ActionResult Categories(int id)
