@@ -12,13 +12,16 @@ namespace StoreDemo.DataAccessLayer
 
         public List<NameWithId> GetCategoriesNamesIdsOfDepartmantById(int departmentId)
         {
-            return _storeDb
-                .Categories
-                .Where(c => c.Department.Id == departmentId)
+            var a = _storeDb
+                .Categories.ToList();
+            var b = a
+                .Where(c => c.Department.Id == departmentId).ToList();
+            var d = b
                 .Select(c => new NameWithId{
                     Name = c.Name,
                     Id = c.Id
                 }).ToList();
+            return d;
         }
     }
 }
