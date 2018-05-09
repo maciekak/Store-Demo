@@ -36,12 +36,39 @@ namespace StoreDemo.DataAccessLayer
             var product = _storeDb.Products.First(p => p.Id == productId);
             return new ProductDetailsViewModel
             {
+                ProductId = product.Id,
                 CategoryName = product.Category.Name,
                 DepartmentName = product.Category.Department.Name,
                 Description = product.Description,
                 Price = product.Price,
                 ProductName = product.Name,
                 DepartmentsNames = _storeDb.Departments.Select(d => d.Name).ToList()
+            };
+        }
+
+        public List<ProductInCartViewModel> GetCartProducts(List<ProductIdWithQuantity> list)
+        {
+            return _storeDb
+                .Products
+                .Where(p => list.Any(x => x.ProductId == p.Id))
+                .Select(p => new ProductInCartViewModel
+                {
+                    ProductId = p.Id,
+                    ProductName = p.Name,
+                    Price = p.Price,
+                    Quantity = list.First(c => c.ProductId == p.Id).Quantity
+                }).ToList();
+        }
+
+        public ProductInCartViewModel GetSingleCartProductById(int id)
+        {
+            var product = _storeDb.Products.First(p => p.Id == id);
+            return new ProductInCartViewModel
+            {
+                Price = product.Price,
+                ProductId = product.Id,
+                ProductName = product.Name,
+                Quantity = 1
             };
         }
     }

@@ -51,6 +51,7 @@ namespace StoreDemo.Controllers
 
         public ActionResult ProductDetails(int id)
         {
+            //TODO: Add validation
             return View(_productsRepository.GetProductDetailsViewModel(id));
         }
     }

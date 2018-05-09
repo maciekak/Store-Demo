@@ -28,8 +28,17 @@
         <input type="button" value="Search"/>
     </div>
     <div>
-        <span>ilosc w koszyku</span>
-        <span>klikalny koszyk</span>
+        <span>
+            @if (Session["Cart"] == null || Session["CartCount"] == null)
+            {
+                <text>0</text>
+            }
+            else
+            {
+                <text>@Session["CartCount"]</text>
+            }
+            </span>
+        <span>  @Html.ActionLink("Cart", "Index", "Cart")</span>
     </div>
 
 </div>
