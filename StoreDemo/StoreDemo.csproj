@@ -103,9 +103,13 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
+    <Compile Include="DataAccessLayer\StoreDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\DepartmentModel.cs" />
+    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -120,8 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DataAccessLayer\" />
-    <Folder Include="Models\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\Cart\" />
     <Folder Include="Views\Home\" />
