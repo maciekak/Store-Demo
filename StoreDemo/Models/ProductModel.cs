@@ -14,6 +14,7 @@ namespace StoreDemo.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
+        public int PurchaseCounter { get; set; }
 
         [ForeignKey("Category")]
         public int CategoryId { get; set; }

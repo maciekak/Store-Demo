@@ -7,6 +7,6 @@ namespace StoreDemo.ViewModels
 {
     public class BaseSearchDepartmentsViewModel
     {
-        public List<string> DepartmentsNames { get; set; }
+        public List<string> DepartmentsNames { get; set; } = new List<string>();
     }
 }

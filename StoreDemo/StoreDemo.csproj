@@ -146,6 +146,7 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
+    <Compile Include="DataAccessLayer\DepartmentsRepository.cs" />
     <Compile Include="DataAccessLayer\StoreDbContext.cs" />
     <Compile Include="DataAccessLayer\StoreDbInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -175,6 +176,10 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Departments.cshtml" />
+    <Content Include="Views\Home\Categories.cshtml" />
+    <Content Include="Views\Home\Products.cshtml" />
+    <Content Include="Views\Home\ProductDeatails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

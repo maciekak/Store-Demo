@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using StoreDemo.DataAccessLayer;
 using StoreDemo.ViewModels;
 
 namespace StoreDemo.Controllers
@@ -12,18 +13,16 @@ namespace StoreDemo.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var model = new BaseSearchDepartmentsViewModel
-            {
-                DepartmentsNames = new List<string>()
-                {
-                    "First",
-                    "Second",
-                    "Third",
-                    "Fourth"
-                }
-            };
+            var departmentsRepository = new DepartmentsRepository();
             
-            return View(model);
+            return View(departmentsRepository.GetDepartmentsViewModel());
+        }
+
+        public ActionResult Departments()
+        {
+            var departmentsRepository = new DepartmentsRepository();
+
+            return View(departmentsRepository.GetDepartmentsViewModel());
         }
     }
 }
