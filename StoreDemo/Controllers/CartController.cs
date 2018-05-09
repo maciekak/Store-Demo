@@ -11,6 +11,7 @@ namespace StoreDemo.Controllers
 {
     public class CartController : Controller
     {
+        private readonly DepartmentsRepository _departmentsRepository = new DepartmentsRepository();
         private readonly ProductsRepository _productsRepository = new ProductsRepository(); 
         private readonly CartService _cartService = new CartService();
         // GET: Cart
@@ -26,8 +27,10 @@ namespace StoreDemo.Controllers
             {
                 Products = _productsRepository.GetCartProducts((List<ProductIdWithQuantity>) Session["Cart"])
             };
-            Session["Count"] = cart.Products.Count;
-            
+            Session["Count"] = cart.Products.Sum(p => p.Quantity);
+
+            cart.DepartmentsNames = _departmentsRepository.GetDepartmentsNames();
+
             return View(cart);
         }
 
@@ -42,7 +45,7 @@ namespace StoreDemo.Controllers
             _cartService.AddProductToCart(cart, id);
 
             Session["Cart"] = cart;
-            Session["CartCount"] = cart.Count;
+            Session["CartCount"] = cart.Sum(p => p.Quantity);
 
             if (Request.UrlReferrer != null)
                 return Redirect(Request.UrlReferrer.ToString());
@@ -61,7 +64,7 @@ namespace StoreDemo.Controllers
             _cartService.DeleteSingleProductFromCart(cart, id);
 
             Session["Cart"] = cart;
-            Session["CartCount"] = cart.Count;
+            Session["CartCount"] = cart.Sum(p => p.Quantity);
 
             return RedirectToAction("Index");
         }
@@ -77,7 +80,7 @@ namespace StoreDemo.Controllers
             _cartService.DeleteAllOffSingleProductFromCart(cart, id);
 
             Session["Cart"] = cart;
-            Session["CartCount"] = cart.Count;
+            Session["CartCount"] = cart.Sum(p => p.Quantity);
 
             return RedirectToAction("Index");
         }

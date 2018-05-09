@@ -48,16 +48,37 @@ namespace StoreDemo.DataAccessLayer
 
         public List<ProductInCartViewModel> GetCartProducts(List<ProductIdWithQuantity> list)
         {
-            return _storeDb
-                .Products
-                .Where(p => list.Any(x => x.ProductId == p.Id))
-                .Select(p => new ProductInCartViewModel
+            var resultList = new List<ProductInCartViewModel>();
+            foreach (var product in _storeDb.Products)
+            {
+                foreach (var item in list)
                 {
-                    ProductId = p.Id,
-                    ProductName = p.Name,
-                    Price = p.Price,
-                    Quantity = list.First(c => c.ProductId == p.Id).Quantity
-                }).ToList();
+                    if (product.Id == item.ProductId)
+                    {
+                        resultList.Add(new ProductInCartViewModel
+                        {
+                            Price = product.Price,
+                            ProductId = product.Id,
+                            ProductName = product.Name,
+                            Quantity = item.Quantity
+                        });
+                        break;
+                    }
+                }
+            }
+            return resultList;
+
+            //TODO: make it great again
+//            return _storeDb
+//                .Products
+//                .Where(p => list.Any(x => x.ProductId == p.Id))
+//                .Select(p => new ProductInCartViewModel
+//                {
+//                    ProductId = p.Id,
+//                    ProductName = p.Name,
+//                    Price = p.Price,
+//                    Quantity = list.First(c => c.ProductId == p.Id).Quantity
+//                }).ToList();
         }
 
         public ProductInCartViewModel GetSingleCartProductById(int id)

@@ -5,5 +5,28 @@
     Layout = "~/Views/Shared/_LayoutView.cshtml";
 }
 
-<h2>Index</h2>
-
+<table>
+    <thead>
+    <tr>
+        <td>Nazwa</td>
+        <td>Cena</td>
+        <td>Ilość</td>
+        <td>Cena łączna</td>
+        <td>Usuń jeden</td>
+        <td>Usuń wszystkie</td>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.Price</td>
+                <td>@item.Quantity</td>
+                <td>@((item.Price * item.Quantity).ToString("c"))</td>
+                <td>@Html.ActionLink("Remove One Item", "DeleteSingle", new {id = item.ProductId})</td>
+                <td>@Html.ActionLink("Remove All Products", "DeleteAll", new {id = item.ProductId})</td>
+            </tr>
+        }
+    </tbody>
+</table>

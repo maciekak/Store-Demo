@@ -5,7 +5,7 @@ using System.Web;
 
 namespace StoreDemo.ViewModels
 {
-    public class CartViewModel
+    public class CartViewModel : BaseSearchDepartmentsViewModel
     {
         public List<ProductInCartViewModel> Products { get; set; }
     }
