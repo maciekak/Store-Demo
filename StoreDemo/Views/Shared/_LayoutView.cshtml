@@ -1,0 +1,32 @@
+﻿@model StoreDemo.ViewModels.BaseSearchDepartmentsViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_LayoutView</title>
+</head>
+<body>
+<div>
+    <input type="text" placeholder="Search"/>
+    <select>
+        <option value="0" selected disabled hidden>Select department</option>
+        @foreach (var name in Model.DepartmentsNames)
+        {
+            <option value="@name">
+                @name
+            </option>
+        }
+    </select>
+    <input type="button" value="Search"/>
+
+</div>
+
+@RenderBody()
+</body>
+</html>
