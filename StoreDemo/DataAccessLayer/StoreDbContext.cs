@@ -11,9 +11,13 @@ namespace StoreDemo.DataAccessLayer
     {
         public StoreDbContext() : base()
         {
-            Database.SetInitializer<StoreDbContext>(new DropCreateDatabaseIfModelChanges<StoreDbContext>());
+            Database.SetInitializer(new StoreDbInitializer());
         }
 
         public DbSet<CategoryModel> Categories { get; set; }
+        public DbSet<DepartmentModel> Departments { get; set; }
+        public DbSet<ProductModel> Products { get; set; }
+        public DbSet<OrderModel> Orders { get; set; }
+        public DbSet<ClientModel> Clients { get; set; }
     }
 }

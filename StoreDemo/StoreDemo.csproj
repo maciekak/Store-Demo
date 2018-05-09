@@ -104,11 +104,14 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="DataAccessLayer\StoreDbContext.cs" />
+    <Compile Include="DataAccessLayer\StoreDbInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\ClientModel.cs" />
     <Compile Include="Models\DepartmentModel.cs" />
+    <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
