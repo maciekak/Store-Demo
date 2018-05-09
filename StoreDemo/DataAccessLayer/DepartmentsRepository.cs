@@ -17,5 +17,23 @@ namespace StoreDemo.DataAccessLayer
                 DepartmentsNames = _storeDb.Departments.Select(d => d.Name).ToList()
             };
         }
+
+        public string GetDepartmentNameById(int departmentId)
+        {
+            return _storeDb
+                .Departments
+                .First(d => d.Id == departmentId)
+                .Name;
+        }
+
+        public List<string> GetDepartmentsNames()
+        {
+            return _storeDb
+                .Departments
+                .Select(d => d.Name)
+                .ToList();
+        }
+
+        public 
     }
 }

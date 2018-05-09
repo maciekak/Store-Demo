@@ -1,9 +1,16 @@
-﻿@{
+﻿@model StoreDemo.ViewModels.ProductsWithCategoryAndDepartmantViewModel
+
+@{
     ViewBag.Title = "Products";
     Layout = "~/Views/Shared/_LayoutView.cshtml";
 }
 
-<span>Department - Category</span>
+<span>@Model.DepartmentName - @Model.DepartmentName</span>
 
-<h2>Products</h2>
+<ul style="list-style-type: none">
+    @foreach (var item in Model.ProductsWithIds)
+    {
+        <li>@Html.ActionLink(item.Name, "ProductDetails", new { id = item.Id })</li>
+    }
+</ul>
 

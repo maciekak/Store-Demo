@@ -1,0 +1,15 @@
+﻿@model StoreDemo.ViewModels.ProductDetailsViewModel
+
+@{
+    ViewBag.Title = "ProductDeatails";
+    Layout = "~/Views/Shared/_LayoutView.cshtml";
+}
+
+<span>@Model.DepartmentName - @Model.CategoryName - @Model.ProductName</span>
+
+<h2>@Model.ProductName</h2>
+<h3>@Model.Price</h3>
+<br/>
+<div>
+    @Model.Description
+</div>
