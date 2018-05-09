@@ -1,0 +1,26 @@
+﻿body {
+
+}
+
+table, th,td {
+    border: 1px solid black;
+}
+
+thead {
+    height: 50px;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ff0000;
+}
+
+.black {
+    color: black;
+}
