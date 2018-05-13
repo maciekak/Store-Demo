@@ -99,7 +99,34 @@ namespace StoreDemo.Controllers
             if (!CheckCartIsCreated())
                 return RedirectToAction("Index", "Home");
 
-            return View();
+            var cart = (List<ProductIdWithQuantity>)Session["Cart"];
+            var model = new ClientContactViewModel
+            {
+                QuantityOfProducts = cart.Sum(p => p.Quantity),
+                PriceForAllProducts = 0.0m
+            };
+
+            return View(model);
+        }
+
+        [ActionName("Contact")]
+        [HttpPost]
+        public ActionResult ClientContact(ClientContactViewModel model)
+        {
+            //Add validation
+
+            return RedirectToAction("Summary", model);
+
+        }
+
+        [ChildActionOnly]
+        public ActionResult Summary(ClientContactViewModel model)
+        {
+            if (!CheckCartIsCreated())
+                return RedirectToAction("Index", "Home");
+
+            var products = _productsRepository.GetCartProducts((List<ProductIdWithQuantity>) Session["Cart"]);
+            return null;
         }
     }
 }

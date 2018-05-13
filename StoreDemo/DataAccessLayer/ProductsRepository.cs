@@ -92,5 +92,22 @@ namespace StoreDemo.DataAccessLayer
                 Quantity = 1
             };
         }
+
+        public decimal GetPriceForAllProducts(List<ProductIdWithQuantity> productsInCart)
+        {
+            var sum = 0.0m;
+            foreach (var product in _storeDb.Products)
+            {
+                foreach (var item in productsInCart)
+                {
+                    if (product.Id == item.ProductId)
+                    {
+                        sum += product.Price * item.Quantity;
+                        break;
+                    }
+                }
+            }
+            return sum;
+        }
     }
 }
