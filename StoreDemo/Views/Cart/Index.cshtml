@@ -19,19 +19,22 @@
     </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Products)
-        {
-            <tr>
-                <td>@item.ProductName</td>
-                <td>@item.Price</td>
-                <td>@item.Quantity</td>
-                <td>@((item.Price * item.Quantity).ToString("c"))</td>
-                <td>@Html.ActionLink("Remove One Item", "DeleteSingle", new {id = item.ProductId})</td>
-                <td>@Html.ActionLink("Remove All Products", "DeleteAll", new {id = item.ProductId})</td>
-            </tr>
-        }
+    @foreach (var item in Model.Products)
+    {
+        <tr>
+            <td>@item.ProductName</td>
+            <td>@item.Price</td>
+            <td>@item.Quantity</td>
+            <td>@((item.Price * item.Quantity).ToString("c"))</td>
+            <td>@Html.ActionLink("Remove One Item", "DeleteSingle", new {id = item.ProductId})</td>
+            <td>@Html.ActionLink("Remove All Products", "DeleteAll", new {id = item.ProductId})</td>
+        </tr>
+    }
     </tbody>
 </table>
+
+<br />
+@Html.ActionLink("Dokonaj zakupu", "Contact")
 
 <script src="~/Scripts/jquery-3.0.0.js"></script>
 <script src="~/Scripts/scripts.js"></script>

@@ -1,0 +1,38 @@
+﻿@model StoreDemo.ViewModels.ClientContactViewModel
+
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_LayoutView.cshtml";
+}
+
+<h2>Podaj adres wysyłki</h2>
+
+Zapłacisz @Model.PriceForAllProducts za @Model.QuantityOfProducts produktów
+<br/>
+<br/>
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.FirstName)</td>
+            <td>@Html.EditorFor(m => m.FirstName)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.LastName)</td>
+            <td>@Html.EditorFor(m => m.LastName)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Address)</td>
+            <td>@Html.EditorFor(m => m.Address)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.AdditionalInformation)</td>
+            <td>@Html.EditorFor(m => m.AdditionalInformation)</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Przejdź dalej"/></td>
+        </tr>
+    </table>
+}
+

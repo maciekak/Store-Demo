@@ -168,6 +168,7 @@
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\CategoriesNamesWithDepartmentNameViewModel.cs" />
     <Compile Include="BussinessLogic\NameWithId.cs" />
+    <Compile Include="ViewModels\ClientContactViewModel.cs" />
     <Compile Include="ViewModels\DepartmentsNameIdViewModel.cs" />
     <Compile Include="ViewModels\ProductDetailsViewModel.cs" />
     <Compile Include="ViewModels\ProductInCartViewModel.cs" />
@@ -194,6 +195,7 @@
     <Content Include="Views\Home\Products.cshtml" />
     <Content Include="Views\Home\ProductDetails.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

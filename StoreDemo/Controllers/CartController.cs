@@ -14,10 +14,15 @@ namespace StoreDemo.Controllers
         private readonly DepartmentsRepository _departmentsRepository = new DepartmentsRepository();
         private readonly ProductsRepository _productsRepository = new ProductsRepository(); 
         private readonly CartService _cartService = new CartService();
+
+        private bool CheckCartIsCreated()
+        {
+            return Session["Cart"] != null && Session["CartCount"] != null;
+        }
         // GET: Cart
         public ActionResult Index()
         {
-            if (Session["Cart"] == null || Session["CartCount"] == null)
+            if (!CheckCartIsCreated())
             {
                 Session["Cart"] = new List<ProductIdWithQuantity>();
                 Session["CartCount"] = 0;
@@ -36,7 +41,7 @@ namespace StoreDemo.Controllers
 
         public ActionResult AddToCart(int id)
         {
-            if (Session["Cart"] == null || Session["CartCount"] == null)
+            if (!CheckCartIsCreated())
             {
                 Session["Cart"] = new List<ProductIdWithQuantity>();
             }
@@ -56,7 +61,7 @@ namespace StoreDemo.Controllers
         [ActionName("DeleteSingle")]
         public ActionResult DeleteFromCart(int id)
         {
-            if (Session["Cart"] == null || Session["CartCount"] == null)
+            if (!CheckCartIsCreated())
                 return RedirectToAction("Index");
 
             var cart = (List<ProductIdWithQuantity>)Session["Cart"];
@@ -72,7 +77,7 @@ namespace StoreDemo.Controllers
         [ActionName("DeleteAll")]
         public ActionResult DeleteAllOffSingleProductFromCart(int id)
         {
-            if (Session["Cart"] == null || Session["CartCount"] == null)
+            if (!CheckCartIsCreated())
                 return RedirectToAction("Index");
 
             var cart = (List<ProductIdWithQuantity>)Session["Cart"];
@@ -83,6 +88,18 @@ namespace StoreDemo.Controllers
             Session["CartCount"] = cart.Sum(p => p.Quantity);
 
             return RedirectToAction("Index");
+        }
+
+
+        [ActionName("Contact")]
+        // GET: Purchase
+        [HttpGet]
+        public ActionResult ClientContact()
+        {
+            if (!CheckCartIsCreated())
+                return RedirectToAction("Index", "Home");
+
+            return View();
         }
     }
 }
