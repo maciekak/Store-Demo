@@ -113,20 +113,23 @@ namespace StoreDemo.Controllers
         [HttpPost]
         public ActionResult ClientContact(ClientContactViewModel model)
         {
-            //Add validation
+            //TODO: Add validation
 
             return RedirectToAction("Summary", model);
 
         }
-
+        //TODO: make it work
         [ChildActionOnly]
+        [HttpGet]
         public ActionResult Summary(ClientContactViewModel model)
         {
             if (!CheckCartIsCreated())
                 return RedirectToAction("Index", "Home");
+            
+            var viewModel = (ProductsWithClientContactViewModel) model;
+            viewModel.Products = _productsRepository.GetCartProducts((List<ProductIdWithQuantity>)Session["Cart"]);
 
-            var products = _productsRepository.GetCartProducts((List<ProductIdWithQuantity>) Session["Cart"]);
-            return null;
+            return View(viewModel);
         }
     }
 }

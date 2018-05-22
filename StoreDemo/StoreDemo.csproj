@@ -173,6 +173,7 @@
     <Compile Include="ViewModels\ProductDetailsViewModel.cs" />
     <Compile Include="ViewModels\ProductInCartViewModel.cs" />
     <Compile Include="ViewModels\ProductsWithCategoryAndDepartmantViewModel.cs" />
+    <Compile Include="ViewModels\ProductsWithClientContactViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -196,6 +197,7 @@
     <Content Include="Views\Home\ProductDetails.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\Contact.cshtml" />
+    <Content Include="Views\Cart\Summary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

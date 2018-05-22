@@ -5,7 +5,7 @@ using System.Web;
 
 namespace StoreDemo.ViewModels
 {
-    public class ClientContactViewModel
+    public class ClientContactViewModel : BaseSearchDepartmentsViewModel
     {
         public int QuantityOfProducts { get; set; }
         public decimal PriceForAllProducts { get; set; }
