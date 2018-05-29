@@ -7,3 +7,13 @@
 
 <h2>Summary</h2>
 
+@Html.DisplayForModel()
+
+
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Zapłać"/>
+}
+<br/>
+@Html.ActionLink("Kontynuuj zakupy", "Index", "Home")
