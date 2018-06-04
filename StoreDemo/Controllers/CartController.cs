@@ -103,7 +103,7 @@ namespace StoreDemo.Controllers
             var model = new ClientContactViewModel
             {
                 QuantityOfProducts = cart.Sum(p => p.Quantity),
-                PriceForAllProducts = 0.0m
+                PriceForAllProducts = _productsRepository.GetPriceForAllProducts(cart)
             };
 
             return View(model);
@@ -119,12 +119,31 @@ namespace StoreDemo.Controllers
             if (!CheckCartIsCreated())
                 return RedirectToAction("Index", "Home");
 
+            //TODO: refactor this
+            var products = _productsRepository.GetCartProducts((List<ProductIdWithQuantity>) Session["Cart"]);
             var viewModel = new ProductsWithClientContactViewModel(model)
             {
-                Products = _productsRepository.GetCartProducts((List<ProductIdWithQuantity>) Session["Cart"])
+                Products = products,
+                PriceForAllProducts = products.Sum(p => p.Price*p.Quantity),
+                QuantityOfProducts = products.Sum(p => p.Quantity)
             };
 
             return View("Summary", viewModel);
+        }
+
+        [ActionName("Confirmation")]
+        [HttpPost]
+        public ActionResult PurchaseConfirmation(ProductsWithClientContactViewModel model)
+        {
+            //TODO: check if nothing has changed
+            Session["Cart"] = null;
+            Session["CartCount"] = null;
+
+            var baseViewModel = new BaseSearchDepartmentsViewModel
+            {
+                DepartmentsNames = _departmentsRepository.GetDepartmentsNames()
+            };
+            return View(baseViewModel);
         }
     }
 }

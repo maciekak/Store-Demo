@@ -7,6 +7,10 @@ namespace StoreDemo.ViewModels
 {
     public class ProductsWithClientContactViewModel : ClientContactViewModel
     {
+        public ProductsWithClientContactViewModel()
+        {
+        }
+
         public ProductsWithClientContactViewModel(ClientContactViewModel baseModel)
         {
             //TODO: Please, refactor this
